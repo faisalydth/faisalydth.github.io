@@ -1,0 +1,281 @@
+// Compiled in terminal for Dart SASS --> sass scss/main.scss css/main.css
+
+// Mixin
+
+@mixin flex-box($par-jst-content: flex-start, $par-alg-items: flex-start, $par-flex-dir: row) {
+  display: flex;
+  justify-content: $par-jst-content;
+  align-items: $par-alg-items;
+  flex-direction: $par-flex-dir;
+}
+
+// Import font
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// Variables
+
+$var-border-red: 1px solid red;
+$var-font-fam: 'Poppins',
+sans-serif;
+$var-col-white: #ffffff;
+$var-col-blue-1: #23547b;
+$var-col-blue-2: #3e72a6;
+$var-col-blue-3: #a7cae6;
+$var-col-green: #3cb371;
+$var-col-orange: #ffa500;
+$var-col-grey-1: #3c3c3c;
+$var-col-grey-2: #787878;
+$var-col-grey-3: #b4b4b4;
+$var-col-grey-4: #f9f9f9;
+
+// Base
+
+html {
+  font-family: $var-font-fam;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: $var-col-white;
+  @include flex-box(space-between, center, column);
+}
+
+#top-con,
+#bottom-con {
+  width: 100%;
+  padding: 0.75rem 0;
+}
+
+#top-con {
+  @include flex-box(flex-start, center, column);
+}
+
+#bottom-con {
+  @include flex-box(center, center, row);
+}
+
+// Header
+
+header {
+  width: 85%;
+  transition: 0.3s;
+  // @include flex-box(space-between, center, row);
+  @include flex-box(center, center, row);
+
+  #logo-hdr {
+    height: 2rem;
+  }
+
+  #btn-theme {
+    cursor: pointer;
+  }
+
+  #btn-theme:hover {
+    color: $var-col-blue-2;
+  }
+}
+
+header.sticky {
+  position: sticky;
+  width: 100%;
+  top: -1px;
+  padding: 0.35rem 1.75rem 0.15rem 1.75rem;
+  border: 0;
+  font-size: 0.65rem;
+  background-color: $var-col-grey-1;
+  color: $var-col-white;
+
+  #logo-hdr {
+    height: 1.25rem;
+    filter: brightness(0) invert(1);
+  }
+
+  #btn-theme:hover {
+    color: $var-col-blue-3;
+  }
+}
+
+// Main
+
+#main {
+  width: 85%;
+  padding-top: 0.75rem;
+  @include flex-box(flex-start, center, column);
+}
+
+#intro {
+  padding-top: 0.5rem;
+  padding-bottom: 1.25rem;
+  @include flex-box(flex-start, center, column);
+
+  p {
+    font-size: 0.85rem;
+    font-weight: 300;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 600
+  }
+}
+
+.menu-group {
+  width: 90%;
+  @include flex-box(flex-start, center, column);
+
+  // Portrait
+  @media screen and (min-width: 600px) and (orientation : portrait) {
+    width: 75%;
+  }
+
+  // Landscape
+  @media screen and (min-width: 960px) and (orientation : landscape) {
+    width: 70%;
+  }
+
+  @media screen and (min-width: 1280px) and (orientation : landscape) {
+    width: 55%;
+  }
+
+  h2 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.5rem;
+  }
+
+  .btn-app {
+    cursor: pointer;
+    width: 100%;
+    padding: 0.25rem;
+    margin: 0.5rem;
+    border-radius: 0.65rem;
+    background-color: $var-col-blue-2;
+    color: $var-col-white;
+    @include flex-box(space-between, center, row);
+
+    .btn-gap,
+    .btn-arrow {
+      width: 10%;
+
+      // Landscape
+      @media screen and (min-width: 960px) and (orientation : landscape) {
+        width: 7%;
+      }
+
+      @media screen and (min-width: 1280px) and (orientation : landscape) {
+        width: 5%;
+      }
+    }
+  }
+
+  .btn-app:hover {
+    background-color: $var-col-blue-1;
+  }
+
+  .btn-app.open {
+    border-radius: 0.65rem 0.65rem 0 0;
+    background-color: $var-col-blue-1;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .btn-app.open:hover {
+    background-color: $var-col-blue-2;
+  }
+
+  .app-dtl {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0 0 0.65rem 0.65rem;
+    background-color: $var-col-grey-4;
+    @include flex-box(flex-start, center, column);
+
+    img {
+      margin: 0 0.75rem;
+      padding: 0.25rem;
+      height: auto;
+      max-width: 60%;
+      border-radius: 50%;
+      background-color: $var-col-white;
+
+      // Portrait
+      @media screen and (min-width: 600px) and (orientation : portrait) {
+        max-width: 50%;
+      }
+
+      @media screen and (min-width: 768px) and (orientation : portrait) {
+        max-width: 40%;
+      }
+
+      // Landscape
+      @media screen and (min-width: 1280px) and (orientation : landscape) {
+        max-width: 40%;
+      }
+    }
+
+    .app-desc {
+      font-size: 0.8rem;
+      margin: 0 0.75rem;
+      padding: 0.5rem 0;
+      @include flex-box(flex-start, center, column);
+
+      p {
+        text-align: center;
+      }
+
+      a button {
+        cursor: pointer;
+        margin-top: 0.65rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.65rem;
+        background-color: $var-col-blue-2;
+        color: $var-col-white;
+      }
+
+      a button:hover {
+        background-color: $var-col-blue-1;
+      }
+    }
+  }
+
+  @media screen and (orientation : landscape) {
+    .app-dtl {
+      @include flex-box(flex-start, center, row);
+
+      img {
+        max-width: 30%;
+      }
+    }
+  }
+}
+
+.app-dtl.hidden {
+  display: none;
+}
+
+// Profile
+
+#profile {
+  margin-top: 2rem;
+}
+
+#btn-profile {
+  font-size: 0.85rem;
+}
+
+#btn-profile p:hover {
+  transform: translateX(8px);
+  transition-duration: 0.4s;
+}
+
+// Footer
+
+#copy {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: $var-col-grey-2;
+}
