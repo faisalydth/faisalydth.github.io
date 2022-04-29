@@ -4,12 +4,32 @@ html {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
   font-weight: 400;
+  scroll-behavior: smooth;
+}
+
+@media screen and (min-width: 600px) and (orientation: portrait) {
+  html {
+    font-size: 1.15rem;
+  }
+}
+
+@media screen and (min-width: 960px) and (orientation: landscape) {
+  html {
+    font-size: 1.15rem;
+  }
+}
+
+@media screen and (min-width: 1280px) and (orientation: landscape) {
+  html {
+    font-size: 1.25rem;
+  }
 }
 
 body {
   width: 100vw;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: white;
+  color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23,6 +43,11 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+body.dark {
+  background-color: #0a1e24;
+  color: white;
 }
 
 #top-con,
@@ -64,9 +89,9 @@ body {
 }
 
 header {
-  width: 85%;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  width: 100%;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -82,38 +107,64 @@ header {
   flex-direction: row;
 }
 
-header #logo-hdr {
+header #hdr-box {
+  width: 85%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+@media screen and (min-width: 1280px) and (orientation: landscape) {
+  header #hdr-box {
+    width: 70%;
+  }
+}
+
+header #hdr-box #hdr-logo {
   height: 2rem;
 }
 
-header #btn-theme {
+header #hdr-box #hdr-logo.dark {
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
+
+header #hdr-box #btn-theme {
   cursor: pointer;
 }
 
-header #btn-theme:hover {
-  color: #3e72a6;
+header #hdr-box #btn-theme:hover {
+  color: #04a96d;
 }
 
 header.sticky {
   position: -webkit-sticky;
   position: sticky;
-  width: 100%;
   top: -1px;
-  padding: 0.35rem 1.75rem 0.15rem 1.75rem;
-  border: 0;
+  padding-top: 0.25rem;
   font-size: 0.65rem;
-  background-color: #3c3c3c;
-  color: #ffffff;
+  background-color: #133944;
+  color: white;
 }
 
-header.sticky #logo-hdr {
-  height: 1.25rem;
+header.sticky #hdr-box #hdr-logo {
+  height: 1.5rem;
   -webkit-filter: brightness(0) invert(1);
   filter: brightness(0) invert(1);
 }
 
-header.sticky #btn-theme:hover {
-  color: #a7cae6;
+header.sticky #hdr-box #btn-theme:hover {
+  color: #06f9a0;
 }
 
 #main {
@@ -155,11 +206,19 @@ header.sticky #btn-theme:hover {
 #intro p {
   font-size: 0.85rem;
   font-weight: 300;
+  letter-spacing: 1px;
 }
 
 #intro h1 {
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+#intro p#intro-desc {
+  padding-top: 1rem;
+  font-size: 0.75rem;
+  color: #a19eae;
 }
 
 .menu-group {
@@ -199,8 +258,11 @@ header.sticky #btn-theme:hover {
 
 .menu-group h2 {
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 700;
   padding: 0.5rem;
+  letter-spacing: 2px;
+  text-align: center;
+  line-height: 1.25rem;
 }
 
 .menu-group .btn-app {
@@ -209,8 +271,9 @@ header.sticky #btn-theme:hover {
   padding: 0.25rem;
   margin: 0.5rem;
   border-radius: 0.65rem;
-  background-color: #3e72a6;
-  color: #ffffff;
+  background-color: #04a96d;
+  color: white;
+  letter-spacing: 2px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -248,17 +311,17 @@ header.sticky #btn-theme:hover {
 }
 
 .menu-group .btn-app:hover {
-  background-color: #23547b;
+  background-color: #03724a;
 }
 
 .menu-group .btn-app.open {
   border-radius: 0.65rem 0.65rem 0 0;
-  background-color: #23547b;
+  background-color: #03724a;
   margin: 0.5rem 0 0 0;
 }
 
 .menu-group .btn-app.open:hover {
-  background-color: #3e72a6;
+  background-color: #04a96d;
 }
 
 .menu-group .app-dtl {
@@ -266,7 +329,7 @@ header.sticky #btn-theme:hover {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 0 0 0.65rem 0.65rem;
-  background-color: #f9f9f9;
+  background-color: #efeff0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -283,12 +346,12 @@ header.sticky #btn-theme:hover {
 }
 
 .menu-group .app-dtl img {
-  margin: 0 0.75rem;
+  margin: 0.5rem 0.75rem;
   padding: 0.25rem;
   height: auto;
   max-width: 60%;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: white;
 }
 
 @media screen and (min-width: 600px) and (orientation: portrait) {
@@ -307,6 +370,10 @@ header.sticky #btn-theme:hover {
   .menu-group .app-dtl img {
     max-width: 40%;
   }
+}
+
+.menu-group .app-dtl img.dark {
+  background-color: #efeff0;
 }
 
 .menu-group .app-dtl .app-desc {
@@ -337,12 +404,16 @@ header.sticky #btn-theme:hover {
   margin-top: 0.65rem;
   padding: 0.5rem 1rem;
   border-radius: 0.65rem;
-  background-color: #3e72a6;
-  color: #ffffff;
+  background-color: #04a96d;
+  color: white;
 }
 
 .menu-group .app-dtl .app-desc a button:hover {
-  background-color: #23547b;
+  background-color: #03724a;
+}
+
+.menu-group .app-dtl.dark {
+  background-color: #3c3c3e;
 }
 
 @media screen and (orientation: landscape) {
@@ -375,8 +446,13 @@ header.sticky #btn-theme:hover {
   margin-top: 2rem;
 }
 
-#btn-profile {
+#btn-profile p {
   font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+#btn-profile p.dark {
+  color: white;
 }
 
 #btn-profile p:hover {
@@ -389,7 +465,7 @@ header.sticky #btn-theme:hover {
 #copy {
   font-size: 0.75rem;
   font-weight: 500;
-  color: #787878;
+  color: #a19eae;
 }
 
 /*# sourceMappingURL=main.css.map */

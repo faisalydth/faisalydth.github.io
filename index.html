@@ -28,10 +28,12 @@
 
     <!-- Header / navigation -->
     <header class="">
-      <a href="#">
-        <img id="logo-hdr" src="img/png/faisalydth-line.png" alt="">
-      </a>
-      <!-- <i id="btn-theme" class="fa-solid fa-moon"></i> -->
+      <div id="hdr-box">
+        <a href="#">
+          <img id="hdr-logo" src="img/png/faisalydth-line.png" alt="">
+        </a>
+        <i id="btn-theme" class="fa-solid fa-moon"></i>
+      </div>
     </header>
 
     <!-- Main section -->
@@ -41,13 +43,17 @@
       <div id="intro">
         <p>Welcome to</p>
         <h1>Faisalydth World</h1>
+        <p id="intro-desc">Web-based App Collection</p>
       </div>
 
       <!-- Menu -->
       <div class="menu-group">
 
         <!-- Category A -->
-        <h2>Games</h2>
+        <h2>
+          <i class="fa-solid fa-gamepad"></i><br>
+          Games
+        </h2>
 
         <!-- App A.1 -->
         <button class="btn-app open">
@@ -56,7 +62,7 @@
           <i class="btn-arrow fa-solid fa-caret-up"></i>
         </button>
         <div class="app-dtl">
-          <img src="img/png/katfa-logo.png" alt="">
+          <img src="img/png/katfa-circle.png" alt="">
           <div class="app-desc">
             <p>
               A word guessing game inspired by Katla & Wordle.
@@ -70,9 +76,7 @@
           </div>
         </div>
 
-        <!-- Category B -->
-
-        <!-- App B.1 -->
+        <!-- App A.2 -->
         <button class="btn-app">
           <span class="btn-gap"></span>
           Lorem ipsum

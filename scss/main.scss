@@ -18,16 +18,22 @@
 $var-border-red: 1px solid red;
 $var-font-fam: 'Poppins',
 sans-serif;
-$var-col-white: #ffffff;
-$var-col-blue-1: #23547b;
-$var-col-blue-2: #3e72a6;
-$var-col-blue-3: #a7cae6;
-$var-col-green: #3cb371;
-$var-col-orange: #ffa500;
-$var-col-grey-1: #3c3c3c;
-$var-col-grey-2: #787878;
-$var-col-grey-3: #b4b4b4;
-$var-col-grey-4: #f9f9f9;
+
+$var-col-black: hsl(0, 0%, 0%);
+$var-col-white: hsl(0, 0%, 100%);
+
+$var-col-bs-green: hsl(158, 95%, 34%);
+$var-col-bs-green-dk: hsl(158, 95%, 23%);
+$var-col-bs-green-lt: hsl(158, 95%, 50%);
+$var-col-bs-blue: hsl(193, 56%, 17%);
+$var-col-bs-blue-dk: hsl(193, 56%, 9%);
+$var-col-bs-gray: hsl(251, 9%, 65%);
+$var-col-bs-gray-dk: hsl(251, 2%, 24%);
+$var-col-bs-gray-lt: hsl(251, 5%, 94%);
+
+$var-col-kf-green: hsl(142, 72%, 29%);
+$var-col-kf-orange: hsl(41, 96%, 40%);
+$var-col-kf-gray: hsl(217, 19%, 27%);
 
 // Base
 
@@ -35,13 +41,36 @@ html {
   font-family: $var-font-fam;
   font-size: 1rem;
   font-weight: 400;
+  scroll-behavior: smooth;
+
+  // Portrait
+
+  @media screen and (min-width: 600px) and (orientation : portrait) {
+    font-size: 1.15rem;
+  }
+
+  // Landscape
+
+  @media screen and (min-width: 960px) and (orientation : landscape) {
+    font-size: 1.15rem;
+  }
+
+  @media screen and (min-width: 1280px) and (orientation : landscape) {
+    font-size: 1.25rem;
+  }
 }
 
 body {
   width: 100vw;
   min-height: 100vh;
   background-color: $var-col-white;
+  color: $var-col-black;
   @include flex-box(space-between, center, column);
+}
+
+body.dark {
+  background-color: $var-col-bs-blue-dk;
+  color: $var-col-white;
 }
 
 #top-con,
@@ -61,41 +90,53 @@ body {
 // Header
 
 header {
-  width: 85%;
-  transition: 0.3s;
-  // @include flex-box(space-between, center, row);
+  width: 100%;
+  transition: 0.4s;
   @include flex-box(center, center, row);
 
-  #logo-hdr {
-    height: 2rem;
-  }
+  #hdr-box {
+    width: 85%;
+    @include flex-box(space-between, center, row);
 
-  #btn-theme {
-    cursor: pointer;
-  }
+    @media screen and (min-width: 1280px) and (orientation : landscape) {
+      width: 70%;
+    }
 
-  #btn-theme:hover {
-    color: $var-col-blue-2;
+    #hdr-logo {
+      height: 2rem;
+    }
+
+    #hdr-logo.dark {
+      filter: brightness(0) invert(1);
+    }
+
+    #btn-theme {
+      cursor: pointer;
+    }
+
+    #btn-theme:hover {
+      color: $var-col-bs-green;
+    }
   }
 }
 
 header.sticky {
   position: sticky;
-  width: 100%;
   top: -1px;
-  padding: 0.35rem 1.75rem 0.15rem 1.75rem;
-  border: 0;
+  padding-top: 0.25rem;
   font-size: 0.65rem;
-  background-color: $var-col-grey-1;
+  background-color: $var-col-bs-blue;
   color: $var-col-white;
 
-  #logo-hdr {
-    height: 1.25rem;
-    filter: brightness(0) invert(1);
-  }
+  #hdr-box {
+    #hdr-logo {
+      height: 1.5rem;
+      filter: brightness(0) invert(1);
+    }
 
-  #btn-theme:hover {
-    color: $var-col-blue-3;
+    #btn-theme:hover {
+      color: $var-col-bs-green-lt;
+    }
   }
 }
 
@@ -115,11 +156,19 @@ header.sticky {
   p {
     font-size: 0.85rem;
     font-weight: 300;
+    letter-spacing: 1px;
   }
 
   h1 {
     font-size: 1.25rem;
-    font-weight: 600
+    font-weight: 800;
+    letter-spacing: 2px;
+  }
+
+  p#intro-desc {
+    padding-top: 1rem;
+    font-size: 0.75rem;
+    color: $var-col-bs-gray;
   }
 }
 
@@ -128,11 +177,13 @@ header.sticky {
   @include flex-box(flex-start, center, column);
 
   // Portrait
+
   @media screen and (min-width: 600px) and (orientation : portrait) {
     width: 75%;
   }
 
   // Landscape
+
   @media screen and (min-width: 960px) and (orientation : landscape) {
     width: 70%;
   }
@@ -143,8 +194,11 @@ header.sticky {
 
   h2 {
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 700;
     padding: 0.5rem;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 1.25rem;
   }
 
   .btn-app {
@@ -153,8 +207,9 @@ header.sticky {
     padding: 0.25rem;
     margin: 0.5rem;
     border-radius: 0.65rem;
-    background-color: $var-col-blue-2;
+    background-color: $var-col-bs-green;
     color: $var-col-white;
+    letter-spacing: 2px;
     @include flex-box(space-between, center, row);
 
     .btn-gap,
@@ -162,6 +217,7 @@ header.sticky {
       width: 10%;
 
       // Landscape
+
       @media screen and (min-width: 960px) and (orientation : landscape) {
         width: 7%;
       }
@@ -173,17 +229,17 @@ header.sticky {
   }
 
   .btn-app:hover {
-    background-color: $var-col-blue-1;
+    background-color: $var-col-bs-green-dk;
   }
 
   .btn-app.open {
     border-radius: 0.65rem 0.65rem 0 0;
-    background-color: $var-col-blue-1;
+    background-color: $var-col-bs-green-dk;
     margin: 0.5rem 0 0 0;
   }
 
   .btn-app.open:hover {
-    background-color: $var-col-blue-2;
+    background-color: $var-col-bs-green;
   }
 
   .app-dtl {
@@ -191,11 +247,11 @@ header.sticky {
     padding: 0.5rem;
     margin-bottom: 0.5rem;
     border-radius: 0 0 0.65rem 0.65rem;
-    background-color: $var-col-grey-4;
+    background-color: $var-col-bs-gray-lt;
     @include flex-box(flex-start, center, column);
 
     img {
-      margin: 0 0.75rem;
+      margin: 0.5rem 0.75rem;
       padding: 0.25rem;
       height: auto;
       max-width: 60%;
@@ -203,6 +259,7 @@ header.sticky {
       background-color: $var-col-white;
 
       // Portrait
+
       @media screen and (min-width: 600px) and (orientation : portrait) {
         max-width: 50%;
       }
@@ -212,9 +269,14 @@ header.sticky {
       }
 
       // Landscape
+
       @media screen and (min-width: 1280px) and (orientation : landscape) {
         max-width: 40%;
       }
+    }
+
+    img.dark {
+      background-color: $var-col-bs-gray-lt;
     }
 
     .app-desc {
@@ -232,14 +294,18 @@ header.sticky {
         margin-top: 0.65rem;
         padding: 0.5rem 1rem;
         border-radius: 0.65rem;
-        background-color: $var-col-blue-2;
+        background-color: $var-col-bs-green;
         color: $var-col-white;
       }
 
       a button:hover {
-        background-color: $var-col-blue-1;
+        background-color: $var-col-bs-green-dk;
       }
     }
+  }
+
+  .app-dtl.dark {
+    background-color: $var-col-bs-gray-dk;
   }
 
   @media screen and (orientation : landscape) {
@@ -263,8 +329,13 @@ header.sticky {
   margin-top: 2rem;
 }
 
-#btn-profile {
+#btn-profile p {
   font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+#btn-profile p.dark {
+  color: $var-col-white;
 }
 
 #btn-profile p:hover {
@@ -277,5 +348,5 @@ header.sticky {
 #copy {
   font-size: 0.75rem;
   font-weight: 500;
-  color: $var-col-grey-2;
+  color: $var-col-bs-gray;
 }
