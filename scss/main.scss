@@ -35,6 +35,27 @@ $var-col-kf-green: hsl(142, 72%, 29%);
 $var-col-kf-orange: hsl(41, 96%, 40%);
 $var-col-kf-gray: hsl(217, 19%, 27%);
 
+// Scrollbar
+
+::-webkit-scrollbar {
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.25rem $var-col-bs-gray-dk;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $var-col-bs-gray-dk;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $var-col-bs-green-dk;
+}
+
 // Base
 
 html {
