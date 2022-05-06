@@ -13,6 +13,16 @@ const appDtl = document.querySelectorAll(".app-dtl");
 const appDtlImg = document.querySelectorAll(".app-dtl>img");
 const btnProfile = document.querySelector("#btn-profile p");
 
+// Change image on hover
+function hover(element) {
+  const alt = element.alt;
+  element.setAttribute('src', 'img/png/' + alt + '-screenshot.png');
+};
+function unhover(element) {
+  const alt = element.alt;
+  element.setAttribute('src', 'img/png/' + alt + '-circle.png');
+};
+
 // Sticky navigation on scroll
 document.addEventListener("scroll", () => {
   let scrTop = document.documentElement.scrollTop;
